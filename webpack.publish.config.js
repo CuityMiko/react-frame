@@ -34,11 +34,6 @@ module.exports = {
                 test: /\.css$/, // Only .css files
                 loader: ExtractTextPlugin.extract("style-loader", "css-loader")
             },
-             // 处理在js中引用less
-            {
-                test: /\.less$/, 
-                loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
-            },
             {
                 test: /\.scss$/,
                 loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")

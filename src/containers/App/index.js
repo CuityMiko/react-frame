@@ -4,9 +4,10 @@
 import './App.css'
 import React,{ Component } from 'react'
 import logo from '../../assets/logo.svg'
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { Layout, Menu, Breadcrumb, Icon,Button } from 'antd';
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
+import { Link } from 'react-router'
 
 export default class AppContainer extends Component{
     constructor(props){
@@ -14,6 +15,9 @@ export default class AppContainer extends Component{
         this.state={
             title:'App Container'
         }
+    }
+    selmenu(e){
+        console.log(e.target.innerHTML)
     }
     render(){
         return (
@@ -28,13 +32,13 @@ export default class AppContainer extends Component{
                         >
                          <Menu.Item key="0"><img src={logo} className="app-logo" alt="logo" /></Menu.Item> 
                         <Menu.Item key="1">
-                            首 页
+                            <Link to='/'>首 页</Link>
                         </Menu.Item>
                         <Menu.Item key="2">
-                            电 影
+                            <Link to='/movie'>电 影</Link>
                         </Menu.Item>
                         <Menu.Item key="3">
-                            关 于
+                            <Link to='/about'>关 于</Link>
                         </Menu.Item>
                         </Menu>
                     </Header>
@@ -74,7 +78,10 @@ export default class AppContainer extends Component{
                         </Breadcrumb>
                         <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
                             {/* 中间内容 */}
-                            { this.state.title }
+                            { this.props.children }
+                            {/* <p>
+                                <Button type="primary" onClick={ (e)=>this.selmenu(e) }>点 击</Button>    
+                            </p> */}
                         </Content>
                         </Layout>
                     </Layout>
