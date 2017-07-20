@@ -1,0 +1,5 @@
+node_modules/
+dist/
+preview/
+src/bower_components/
+typings/
