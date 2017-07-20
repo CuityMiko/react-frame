@@ -21,3 +21,20 @@
 + src/template.html : webpack生产环境自动生成到dist目录的项目入口页面模板
 + 运行 : npm run dev
 + 打包 : npm run pub
+
+### v1版本引入antd
++ npm i antd babel-plugin-import -D
++ 配置webpack以及babel
++ antd 按需加载：
++ 1.babel-plugin-import 是一个用于按需加载组件代码和样式的 babel 插件
++ 2.npm i babel-plugin-import -D
++ 3.修改 .babelrc 文件
+```
+"plugins": [
+    [
+    "import", { 
+    "libraryName": "antd",
+        "style": "css" }
+    ]
+]
+```

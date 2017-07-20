@@ -1,6 +1,6 @@
 
-import './Hello.css';
 import './Hello.scss'
+import './Hello.css';
 import logo from '../../assets/logo.svg'
 
 import React, {Component} from 'react'
@@ -14,9 +14,11 @@ export default class Hello extends Component {
     }
     render() {
         return (
-            <div className="logo">
-                <img src={logo} alt="logo"/>
-                <h1>{ this.state.title }</h1>
+            <div className="hello">
+                <div className="logo">
+                    <img src={logo} alt="logo"/>
+                    <h1>{ this.state.title }</h1>
+                </div>
             </div>
         )
     }
