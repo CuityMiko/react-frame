@@ -12,9 +12,11 @@
 + webpack.publish.config.js : webpack发布生产时配置文件
 + src : 项目程序目录
 + src/bower_components : bower管理的web前端libs
-+ src/components : 组件
++ src/components : 自定义组件目录
++ src/assets : 资源目录
++ src/js : 项目全局js文件目录
 + src/js/app.js : 项目入口文件
-+ src/pages : 前端页面
++ src/containers : 项目页面目录
 + src/index.html : 项目入口页面
 + src/template.html : webpack生产环境自动生成到dist目录的项目入口页面模板
 + 运行 : npm run dev
