@@ -1,3 +1,9 @@
 .app{
-    text-align: center; 
+    
+}
+
+.app .app-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 50px;
+  margin: 6px 11px;
 }

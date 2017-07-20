@@ -4,10 +4,9 @@
 var path = require('path');
 // 自动打开浏览器插件
 var OpenBrowserPlugin = require('open-browser-webpack-plugin');
-// Host端口号
+// Host端口号 package.json文件的--port 端口要写在最后
 var _port= isNaN(process.argv[process.argv.length-1]) ? 8080 : parseInt(process.argv[process.argv.length-1]);
 var _url=`http://localhost:${_port}`;
-
 
 module.exports = {
     entry:[
@@ -41,6 +40,11 @@ module.exports = {
             {
                 test: /\.css$/, // Only .css files
                 loader: 'style!css' // 如果有多个加载器，中间作用感叹号隔开，多个加载器是从右往左去执行
+            },
+            // 处理在js中引用less
+            {
+                test: /\.less$/, 
+                loader: 'style!css!less' // 如果有多个加载器，中间作用感叹号隔开，多个加载器是从右往左去执行
             },
             {
                 test: /\.scss$/,

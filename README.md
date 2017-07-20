@@ -25,7 +25,7 @@
 ### v1版本引入antd
 + npm i antd babel-plugin-import -D
 + 配置webpack以及babel
-+ antd 按需加载：
+##### antd 按需加载：
 + 1.babel-plugin-import 是一个用于按需加载组件代码和样式的 babel 插件
 + 2.npm i babel-plugin-import -D
 + 3.修改 .babelrc 文件
@@ -38,3 +38,4 @@
     ]
 ]
 ```
++ 4.修改主题颜色：修改antd/styles/themes/default.less 中的@primary-colors属性
