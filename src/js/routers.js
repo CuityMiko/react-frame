@@ -5,9 +5,6 @@ import React,{ Component } from 'react'
 import { Router,Route,IndexRoute,browserHistory } from 'react-router'
 
 import AppContainer from '../containers/App/'
-import HomeContainer from '../containers/Home/'
-import MovieContainer from '../containers/Movie/'
-import AboutContainer from '../containers/About/'
 
 export default class Routers extends Component{
     constructor(props){
@@ -17,9 +14,44 @@ export default class Routers extends Component{
         return (
             <Router history={browserHistory}>
                 <Route path='/' component={ AppContainer }>
-                    <IndexRoute component={ HomeContainer}></IndexRoute>
-                    <Route path='/movie' component={ MovieContainer }></Route>
-                    <Route path='/about' component={ AboutContainer }></Route>
+                    {/* 默认页 */}
+                    <IndexRoute
+                        // 权限或者日志记录可以用这两个方法
+                        onEnter={()=>null}
+                        onLeave={()=>null}
+                        getComponent={
+                            (nextStates,callback)=>{
+                                require.ensure([],(require)=>{
+                                    callback(null,require('../containers/Home/').default)
+                                },'home')
+                            }
+                        }>
+                    </IndexRoute>
+                    {/*修改路由实现代码分块，实现异步加载js*/}
+                    <Route path='/movie' 
+                        // 权限或者日志记录可以用这两个方法
+                        onEnter={()=>null}
+                        onLeave={()=>null}
+                        getComponent={
+                            (nextStates,callback)=>{
+                                require.ensure([],(require)=>{
+                                    callback(null,require('../containers/Movie/').default)
+                                },'movie')
+                            }
+                        }>
+                    </Route>
+                    <Route path='/about' 
+                        // 权限或者日志记录可以用这两个方法
+                        onEnter={()=>null}
+                        onLeave={()=>null}
+                        getComponent={
+                            (nextStates,callback)=>{
+                                require.ensure([],(require)=>{
+                                    callback(null,require('../containers/About/').default)
+                                },'about')
+                            }
+                        }>
+                    </Route>
                 </Route>
             </Router>
         )
