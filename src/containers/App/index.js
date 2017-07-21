@@ -8,6 +8,7 @@ import { Layout, Menu, Breadcrumb, Icon,Button } from 'antd';
 const { SubMenu } = Menu;
 const { Header, Content, Sider,Footer } = Layout;
 import { Link } from 'react-router'
+import PropTypes from 'prop-types'
 
 // 自定义组件
 // 面包屑导航
@@ -17,13 +18,28 @@ export default class AppContainer extends Component{
     constructor(props){
         super(props)
         this.state={
-            title:'App Container',
+            title:'Hello App Container',
             navs:[ 
                 { path:'/',name:'首页' },
                 { path:'/movie',name:'电影' },
                 { path:'/movie',name:'电影详情' }
              ]
         }
+    }
+    getChildContext(){
+        return {
+            text:this.state.title
+        }
+    }
+    changetitle(){
+        console.log(44444444444444444)
+        this.setState({
+            title:'hahaha'
+        })
+    }
+    static childContextTypes={
+        text:PropTypes.string.isRequired,
+        changetitle:PropTypes.func
     }
     selmenu(e){
         console.log(e.target.innerHTML)
@@ -87,6 +103,7 @@ export default class AppContainer extends Component{
                         </Breadcrumb> */}
                         <RFBreadcrumb navs={this.state.navs}></RFBreadcrumb>
                         <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
+                            <h1>{this.state.title}</h1>
                             {/* 中间内容 */}
                             { this.props.children }
                             {/* <p>
